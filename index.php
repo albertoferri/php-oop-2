@@ -28,9 +28,9 @@ require './db.php';
             foreach($products as $product) {
                 ?>
                 <div class="col px-2">
-                    <div class="card h-100">
+                    <div class="card">
                         <img src="<?= $product->immagine ?>" class="card-img-top object-fit-cover w-100" alt="<?= $product->titolo ?>" style="height: 300px;">
-                        <div class="card-body">
+                        <div class="card-body" style="min-height: 300px;">
                             <h5 class="card-title d-flex justify-content-between ">
                                 <span><?= $product->titolo ?></span>
                                 <span><i class="fa-solid <?= $product->category->icon ?>"></i></span>
