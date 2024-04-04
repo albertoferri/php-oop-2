@@ -1,8 +1,13 @@
 <?php
 
+require_once './models/traits/materiables.php';
+
 
 class Toy extends Product {
-    public $material;    
+    
+    use Materiables; 
+    
+    
     /**
      * __construct
      *
@@ -11,6 +16,8 @@ class Toy extends Product {
      * @param  Category $category
      * @param  string $material
      */
+
+
     function __construct($name, $price, Category $category, $material) { 
 
         parent::__construct($name, $price, $category);

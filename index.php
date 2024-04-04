@@ -49,26 +49,26 @@ $frisbeeNylon->setImage("https://m.media-amazon.com/images/I/71bjtPw1yLL.jpg");
 $topoPeloso = new Toy("Topolino Peloso con Corda", 3, $catCategory, "pelliccia, corda");
 $topoPeloso->setImage("https://images-eu.ssl-images-amazon.com/images/I/717iYEcTpwL._AC_UL600_SR600,600_.jpg");
 
-$tiragraffiCartone = new Toy("Tiragraffi in Cartone", 8, $catCategory, "cartone");
+$tiragraffiCartone = new Toy("Tiragraffi in Cartone", 8, $catCategory, "cartone, legno");
 $tiragraffiCartone->setImage("https://www.byaldino.com/wp-content/uploads/2021/01/35BB6B5A-8D4E-418D-89F2-DDB95BAD4BAA_1_105_c.jpeg");
 
 
 // cuccia per cani
-$cucciaChiara = new Kennel("Cuccia 'House'", 10, $dogCategory, "medium");
+$cucciaChiara = new Kennel("Cuccia 'House'", 10, $dogCategory, "medium", "plastica");
 $cucciaChiara->setImage("https://arcaplanet.vtexassets.com/arquivos/ids/227610/p-a-y--cuccia-alcazar-70.jpg?v=637454794658030000");
 
-$cucciaMorbida = new Kennel("Cuccia Morbida con Cuscino", 15, $dogCategory, "morbido tessuto");
+$cucciaMorbida = new Kennel("Cuccia Morbida con Cuscino", 15, $dogCategory, "medium", "morbido tessuto");
 $cucciaMorbida->setImage("https://m.media-amazon.com/images/I/51f4UqkDPdL._AC_.jpg");
 
-$cucciaIgloo = new Kennel("Cuccia Igloo in Plastica", 20, $dogCategory, "plastica");
+$cucciaIgloo = new Kennel("Cuccia Igloo in Plastica", 20, $dogCategory, "medium", "plastica");
 $cucciaIgloo->setImage("https://caldaiemurali.it/cdn/shop/products/immagine-2-easycomfort-easycomfort-cuccia-da-esterno-per-cani-di-taglia-piccola-a-forma-di-igloo-con-porta-ean-8055776915241.jpg?v=1695984522");
 
 // Cucce per Gatti
 
-$lettoSoffitto = new Kennel("Letto a Soffitto per Gatti", 12, $catCategory, "tessuto, metallo");
+$lettoSoffitto = new Kennel("Letto a Soffitto per Gatti", 12, $catCategory, "medium", "tessuto, metallo");
 $lettoSoffitto->setImage("https://i.etsystatic.com/21419403/r/il/1c89a5/3702082059/il_570xN.3702082059_72s2.jpg");
 
-$tiragraffiColonna = new Kennel("Tiragraffi a Colonna con Cuscino", 18, $catCategory, "cartone, cotone, corda");
+$tiragraffiColonna = new Kennel("Tiragraffi a Colonna con Cuscino", 18, $catCategory, "large", "cartone, cotone, corda");
 $tiragraffiColonna->setImage("https://m.media-amazon.com/images/I/51kyKoeiQYL._AC_UF894,1000_QL80_.jpg");
 
 $products = [
@@ -108,8 +108,8 @@ $products = [
     
     <div class="container">
         <div class="row my-5 d-flex justify-content-center">
-            <h1 class="display-1 col-12 text-center mb-5">PET-SHOP <i class="fa-solid fa-paw"></i></h1>
-            <h2 class="mb-5 px-4">Prodotti per animali</h2>
+            <h1 class="display-1 col-12 text-center mb-5 text-success fw-bold ">PET-SHOP <i class="fa-solid fa-paw"></i></h1>
+            <h2 class="mb-5">Prodotti per animali</h2>
             <div class="row row-cols-2 row-cols-lg-3  d-flex flex-wrap row-gap-3 px-0">
             <?php
             foreach($products as $product) {
@@ -130,16 +130,17 @@ $products = [
                             <ul class="list-unstyled ">
                                 <?php
                                 echo '<hr>';
-                                echo '<li class="mt-3 fw-bold">Dettagli</li>';
+                                echo '<li class="mt-3 fw-bold fs-5">Dettagli</li>';
 
                                 // controlliamo di che tipo sia il prodotto
                                 if($product instanceof Food) {
-                                    echo '<li class="mt-1">Ingrediente principale: ' . $product->ingredient . '</li>' ;
+                                    echo '<li class="mt-1">Ingredienti: ' . $product->ingredient . '</li>' ;
                                     echo '<li>Scadenza: ' . $product->expireDate . '</li>' ;
 
                                 } else if($product instanceof Kennel) { 
 
-                                    echo '<li class="mt-1">Taglia '. $product->size . '</li>';
+                                    echo '<li class="mt-1"><strong>Taglia: </strong>'. $product->size . '</li>';
+                                    echo '<li class="mt-1">Materiale: '. $product->material . '</li>';
 
                                 } else if($product instanceof Toy) {
 
