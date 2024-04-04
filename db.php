@@ -14,8 +14,6 @@ $dogCategory = new Category("Cani", "fa-dog");
 // creo un prodotto
 $newProduct = new Product("Pallina", 2.30, $dogCategory);
 
-// var_dump($newProduct);
-
 
 // cibo per cani
 $crocchetteManzo = new Food("Crocchette Manzo e Verdure", 7, $dogCategory, "manzo, verdure", "12/24");
@@ -87,3 +85,15 @@ $products = [
     $lettoSoffitto,
     $tiragraffiColonna
 ];
+
+
+// gestione errore try & catch
+$error = null;
+
+try {
+    // qui scriviamo il codice "a rischio"
+    $category = new Category(123, "fa-dragon");
+} catch (Exception $e) {
+    // mi salvo l'errore generato in una variabile che poi mi preoccuperò di mostrare in pagina
+    echo $e->getMessage();
+}
