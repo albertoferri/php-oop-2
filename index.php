@@ -1,41 +1,32 @@
 <?php
 
-// Classe base per i prodotti
-class Prodotto {
-    protected $titolo;
-    protected $prezzo;
-    protected $immagine;
-    protected $categoria;
-    
-    public function getDettagliProdotto() {
-        return 'Titolo: ' . $this->titolo . '<br>' .
-               'Prezzo: ' . $this->prezzo . '<br>' .
-               'Categoria: ' . $this->categoria;
-    }
-}
+require_once './Models/Category.php';
+require_once './Models/Product.php';
+require_once './Models/Food.php';
+require_once './Models/Toy.php';
+require_once './Models/Kennel.php';
 
-require './Models/cat.php';
-require './Models/dog.php';
+// creiamo le categorie
+$catCategory = new Category("Gatti", "fa-cat");
+$dogCategory = new Category("Cani", "fa-dog");
 
-// Classe per la card del prodotto
-class CardProdotto {
-    private $prodotto;
 
-    public function __construct(Prodotto $prodotto) {
-        $this->prodotto = $prodotto;
-    }
+// creo un prodotto
+$newProduct = new Product("Pallina", 2.30, $dogCategory);
 
-    public function stampa() {
-        echo '<div class="card" style="width: 18rem;">';
-        echo '<div class="card-body">';
-        echo $this->prodotto->getDettagliProdotto();
-        echo '</div>';
-        echo '</div>';
-    }
-}
+// var_dump($newProduct);
 
-$prodottoCane = new Prodotto("Giocattolo per cani", 10.99, "url_immagine", "Cani");
-$prodottoGatto = new Prodotto("Giocattolo per gatti", 8.99, "url_immagine", "Gatti");
+
+// cibo
+$crocchette = new Food("Crocchette Crock", 3.14, $catCategory, 'pesce', '10/24');
+
+// giocattolo
+$pallina = new Toy("Pallina Pally", 1, $dogCategory, "Gomma");
+
+// cuccia
+$cuccia = new Kennel("Cuccia Blu", 7, $dogCategory, "medium");
+
+// var_dump($cuccia);
 
 
 ?>
@@ -58,24 +49,11 @@ $prodottoGatto = new Prodotto("Giocattolo per gatti", 8.99, "url_immagine", "Gat
             <h1 class="col-12 text-center">PHP-oop-2</h1>
             <h2 class="mb-5 px-4">Prodotti per animali</h2>
             <div class="col d-flex flex-wrap list-unstyled row-gap-3 ">
-            <?php
-            // Creazione di un array di prodotti
-            $prodotti = array($prodottoCane, $prodottoGatto);
-
-            foreach($prodotti as $prodotto) {
-                $cardProdotto = new CardProdotto($prodotto);
-                echo '
-                <div class="col-12 col-md-6 col-lg-3 px-3">
-                    <div class="card">';
-                $cardProdotto->stampa();
-                echo '
-                    </div>
-                </div>';
-            }
-            ?>
+            
             </div>
         </div>
     </div>
+
 
 
 
