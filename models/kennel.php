@@ -17,6 +17,8 @@ class Kennel extends Product {
     function __construct($name, $price, Category $category, $size) {
         parent::__construct($name, $price, $category);
         $this->size = $size;
+
+        $this->type = "Cuccia";
     }
 
 }

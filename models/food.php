@@ -10,5 +10,7 @@ class Food extends Product{
         parent::__construct($titolo, $prezzo, $category);
         $this->expireDate = $expireDate;
         $this->ingredient = $ingredient;
-}
+        
+        $this->type = 'Cibo';
+    }
 }

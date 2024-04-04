@@ -1,10 +1,11 @@
 <?php
 
 class Product {
-    protected $titolo;
-    protected $prezzo;
-    protected $immagine;
-    protected $category;
+    public $titolo;
+    public $prezzo;
+    public $immagine;
+    public $category;
+    protected $type;
 
     public function __construct($titolo, $prezzo, Category $category) {
         $this->titolo = $titolo;
@@ -12,5 +13,12 @@ class Product {
         $this->category = $category;
     }
     
-    
+    public function setImage($image) {
+        $this->immagine = $image;
+    }
+
+
+    public function getType() {
+        return $this->type;
+    }
 }
